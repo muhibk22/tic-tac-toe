@@ -1,12 +1,14 @@
 const gameBoard = (function () {
     let boardArr = new Array(9).fill(0);
-
+    let moves=9;
+    boardArr=[1,2,1,1,2,2,2,1,1]
     const getBoard = () => boardArr;
     const value = (i, j) => boardArr[i * 3 + j];
 
     const makeMove = (index, mark) => {
         if (boardArr[index] === 0) {
             boardArr[index] = mark;
+            moves++;
         }
         else {
             console.log("alreday taken");
@@ -42,6 +44,12 @@ const gameBoard = (function () {
         return checkRows() || checkCols() || checkDiagonals();
     }
 
+    const checkDraw=()=>{
+        if (moves>=9 && !checkWin()){
+            return true;
+        }
+        return false;
+    }
     const printBoard = () => {
         for (let i = 0; i < 3; i++) {
             let row = "|";
@@ -54,19 +62,22 @@ const gameBoard = (function () {
     }
 
     return {
-        getBoard, printBoard, makeMove, checkWin
+        getBoard, printBoard, makeMove, checkWin, checkDraw
     };
 })();
 
 
 function player(playerName) {
     const name = playerName;
+    const getName=()=>name;
+
+    let score=0;
+    const increaseScore=()=>{
+        score++;
+    }
+
 
 }
 
-gameBoard.makeMove(1, 1);
-gameBoard.makeMove(0, 1);
-console.log(gameBoard.checkWin());
-gameBoard.makeMove(2, 1);
-console.log(gameBoard.checkWin());
+console.log(gameBoard.checkDraw());
 
