@@ -12,13 +12,14 @@ const gameBoard = (function () {
             return true;
         }
         else {
-            console.log("alreday taken");
+            console.log("Already taken");
             return false;
         }
     };
 
     const reset = () => {
         boardArr.fill(0);
+        moves=0;
     }
 
     const checkRows = () => {
@@ -65,6 +66,8 @@ const gameBoard = (function () {
             }
             console.log(row);
         }
+
+
     }
 
     return {
@@ -73,69 +76,74 @@ const gameBoard = (function () {
 })();
 
 
-function player(playerName) {
-    const name = playerName;
+function player(playerName, _mark) {
+    let name = playerName;
     let score = 0;
-
-    const getName = () => name;
-    const increaseScore = () => score++;
-    const makeMove = () => {
-        let index=Math.floor(Math.random()*10);
-       return gameBoard.makeMove(index, name);
+    const mark=_mark;
+    function setName(newName) {
+        name = newName;
     }
 
+    const getMark=()=>mark;
+    const getName = () => name;
+    const increaseScore = () => score++;
+    const makeMove = (index) => {
+        return gameBoard.makeMove(index, mark);
+    };
+
     return {
-        getName, increaseScore, makeMove
+        getName, increaseScore, makeMove, setName, getMark
     };
 
 }
 
 const game = (function () {
-    const player1 = player("X");
-    const player2 = player("O");
-    let rounds=0;
-    //let index;
-    const play = () => {
-        while (true) {
-            if (gameBoard.checkDraw()){
-                console.log("game drawn");
-                break;
-            }
+    const player1 = player("Player 1", "X");
+    const player2 = player("Player 2", "O");
+    let rounds = 0;
+    let draws = 0;
 
-            if (gameBoard.checkWin){
-                console.log()
+
+    const blocks = document.querySelectorAll(".block");
+    const play = () => {
+        rounds = 0;
+        gameBoard.reset();
+        blocks.forEach(block => {
+            block.textContent = '';
+            block.removeEventListener("click", handleMove);
+            block.addEventListener("click", handleMove,);
+        });
+    };
+
+    const handleMove = (event) => {
+        let index = event.target.dataset.index;
+        let currentPlayer = rounds % 2 === 0 ? player1 : player2;
+
+        if (currentPlayer.makeMove(index)) {
+            const target = document.querySelector(`[data-index='${index}']`);
+            target.textContent = currentPlayer.getMark();
+            rounds++;
+            if (gameBoard.checkWin()) {
+                console.log(`${currentPlayer.getName()} won!`);
+                currentPlayer.increaseScore();
+                setTimeout(play, 1000);
             }
-            if (rounds % 2 === 0) {
-                console.log("Player 1's Turn");
-               // index=prompt("Player 1's Turn");
-                if (player1.makeMove()){
-                    rounds++;
-                    gameBoard.printBoard();
-                }
-                if (gameBoard.checkWin()){
-                    console.log("Player 1 won");
-                    break;
-                }
-            }
-            else {
-                console.log("Player 2's turn");
-                //index=prompt("Player 2's turn");
-                if (player2.makeMove()){
-                    rounds++;
-                    gameBoard.printBoard();
-                }
-                if (gameBoard.checkWin()){
-                    console.log("Player 2 won");
-                    break;
-                }
+            else if (gameBoard.checkDraw()) {
+                console.log("It's a draw!");
+                draws++;
+                setTimeout(play, 1000);
             }
         }
-    }
+
+    };
+
+
     return {
         play
-    }
-})();
+    };
 
+
+})();
 
 
 game.play();
