@@ -1,0 +1,57 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+p{
+    font-size: 2.4rem;
+}
+div{
+    margin:10px 0;
+}
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.scores{
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+    background-color: pink;
+
+}
+
+.gameboard{
+    display: grid;
+    width: 600px;
+    grid-template-columns: repeat(3,1fr);
+    gap:2px;
+    background-color: red;
+    border: 1px solid black;
+}
+.block{
+    margin: 0;
+    height: 200px;
+    background-color: white;
+
+}
+
+.block:hover{
+    background-color: grey;
+}
+
+
+.settings{
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+}
+
+button{
+    font-size: 2rem;
+    padding: 6px;
+    width: 40%;
+    cursor: pointer;
+}
