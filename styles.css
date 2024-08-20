@@ -6,9 +6,7 @@
 
 :root{
     --gradient:linear-gradient(45deg, blue,red,blue,red,red,blue,red,blue);
-    --background:linear-gradient(180deg, rgb(35, 0, 32),rgb(59, 1, 68), rgb(2, 0, 93), rgb(85, 9, 147));
 }
-
 
 div{
     margin:10px 0;
@@ -18,16 +16,17 @@ body{
     flex-direction: column;
     align-items: center;
     background-color: rgb(11, 0, 41);
-    color: white;
-   
-    
+    color: white;   
 }
+
 .scores{
     width: 75%;
     display: flex;
     justify-content: space-between;
-    background-color: pink;
     font-size: 2.4rem;
+    font-family: "Bungee Tint", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 
 }
 .card p{
@@ -35,55 +34,48 @@ body{
 }
 .gameboard{
     display: grid;
-    width: 600px;
     grid-template-columns: repeat(3,1fr);
     gap:4px;
-    background-color: red;
-   
+    background-color: white;
 }
 .block{
     margin: 0;
     height: 200px;
-    background-color: white;
+    width: 200px;
     display: flex;
     justify-content:center;
     align-items: center;
-    font-size: 150px;
+    font-size: 200px;
+    background-color: rgb(22, 10, 53);
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
-
 .block:hover{
     background-color: grey;
 }
-
 
 .settings{
     width: 600px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-top: 10px;
     font-family: 'Courier New', Courier, monospace;
     color: rgb(255, 0, 187);
     font-weight: bold;
 }
 
-button{
-    font-size: 1.5rem;
-    padding: 6px 16px;
-    cursor: pointer;
-    border-radius: 8px;
-    border: 0;
-    background-color: bisque;
-}
 .msg{
     font-size: 1.4rem;
 }
 
 .player1{
-    color: rgb(10, 131, 196);
+    color: blue;
 }
 
 .player2{
-    color: rgba(177, 164, 13, 1);
+    color: red
 }
 
 .post-load,.pre-load{
@@ -92,14 +84,7 @@ button{
     flex-direction: column;
     align-items: center;
 }
-.post-load{
-    background-image: var(--background);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    min-height: 100dvh;
-    overflow: hidden;
-}
+
 .display-none{
     display: none;
 }
@@ -152,7 +137,11 @@ input {
 input::placeholder{
     color:white;
 }
-#play{
+button{
+    padding: 6px 16px;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 0;
     margin: 1rem 0;
     background-color: transparent;
     width: 12ch;
@@ -161,7 +150,7 @@ input::placeholder{
     border: 2px solid rgb(255, 255, 255);
     transition: color 0.15s, border-color 0.15s;
 }
-#play:hover{
+button:hover{
     color:red;
     border-color: red;
 }
@@ -174,7 +163,7 @@ form h2{
     margin: 1rem 0;
 }
 
-@media(max-width:768px){
+@media(max-width:778px){
     .names{
         flex-direction: column;
         align-items: center;
@@ -191,5 +180,31 @@ form h2{
     }
     .title{
         font-size: 2rem;
+    }
+    .scores{
+        font-size: 1.3rem;
+    }
+    .block{
+        width: 120px;
+        height: 120px;
+    }
+    .settings{
+        flex-direction: column;
+        width: 100%;
+    }
+}
+
+@media (max-width:540px){
+    .block{
+        width: 90px;
+        height: 90px;
+    }
+    .scores{
+        font-size: 1rem;
+        width: 95%;
+    }
+    #restart{
+        width: 10ch;
+        font-size: 1.3rem;
     }
 }
