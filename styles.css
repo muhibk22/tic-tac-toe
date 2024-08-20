@@ -168,7 +168,12 @@ button:hover{
 form h2{
     margin: 1rem 0;
 }
-
+@media (max-height:800px){
+    .block{
+        width: 120px;
+        height: 120px;
+    }
+}
 @media(max-width:778px){
     .names{
         flex-direction: column;
