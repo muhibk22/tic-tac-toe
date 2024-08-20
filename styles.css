@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+:root{
+    --gradient:linear-gradient(45deg, blue,red,blue,red,red,blue,red,blue);
+    --background:linear-gradient(180deg, rgb(35, 0, 32),rgb(59, 1, 68), rgb(2, 0, 93), rgb(85, 9, 147));
+}
+
 
 div{
     margin:10px 0;
@@ -12,6 +17,10 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: rgb(11, 0, 41);
+    color: white;
+   
+    
 }
 .scores{
     width: 75%;
@@ -68,10 +77,6 @@ button{
 .msg{
     font-size: 1.4rem;
 }
-.title{
-    font-size: 1.5rem;
-    text-align: center;
-}
 
 .player1{
     color: rgb(10, 131, 196);
@@ -79,4 +84,91 @@ button{
 
 .player2{
     color: rgba(177, 164, 13, 1);
+}
+
+.post-load,.pre-load{
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.post-load{
+    background-image: var(--background);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    min-height: 100dvh;
+    overflow: hidden;
+}
+.display-none{
+    display: none;
+}
+
+.title{
+    font-size: 3rem;
+    text-align: center;
+    font-family: "Bungee Tint", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-image: var(--gradient);
+    background-clip:text;
+    color: transparent;
+    background-size: 400%;
+    animation: color-animation 8s infinite;
+}
+
+@keyframes color-animation {
+    0%{background-position: left;}
+    100%{background-position: right;}
+}
+
+form{
+    width: 50vw;
+    border: 5px solid white;
+    border-radius: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 2rem 0;
+    transition: border-color, 0.3s;
+}
+form:active,form:hover{
+    border-color: red;
+}
+input {
+    font-size: 1.5rem;
+    padding: 6px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background-color: rgb(41, 29, 61);
+    border: 0;
+    outline: 0;
+    color: white;
+}
+input::placeholder{
+    color:white;
+}
+#play{
+    margin: 1rem 0;
+    background-color: transparent;
+    width: 12ch;
+    font-size: 2rem;
+    color: white;
+    border: 2px solid rgb(255, 255, 255);
+    transition: color 0.15s, border-color 0.15s;
+}
+#play:hover{
+    color:red;
+    border-color: red;
+}
+.names{
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+}
+form h2{
+    margin: 1rem 0;
 }
