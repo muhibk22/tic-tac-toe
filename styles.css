@@ -66,7 +66,9 @@ body{
     color: rgb(255, 0, 187);
     font-weight: bold;
 }
-
+.post-load{
+    overflow-x: hidden;
+}
 .msg{
     font-size: 1.4rem;
 }
