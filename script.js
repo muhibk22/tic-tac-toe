@@ -170,14 +170,14 @@ const game = (function () {
             if (gameBoard.checkWin()) {
                 displayMsg.innerText = (`${currentPlayer.getName()} won the round!`);
                 currentPlayer.increaseScore();
-                setTimeout(play, 1000);
+                setTimeout(play, 3000);
             }
             else if (gameBoard.checkDraw()) {
                 console.log("It's a draw!");
                 draws++;
                 ties.innerText = draws;
                 displayMsg.innerText = `It's a tie!`;
-                setTimeout(play, 1000);
+                setTimeout(play, 3000);
             }
         }
 
