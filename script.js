@@ -168,7 +168,7 @@ const game = (function () {
             rounds++;
             updateTurnMsg();
             if (gameBoard.checkWin()) {
-                displayMsg.innerText = (`${currentPlayer.getName()} won!`);
+                displayMsg.innerText = (`${currentPlayer.getName()} won the round!`);
                 currentPlayer.increaseScore();
                 setTimeout(play, 1000);
             }
