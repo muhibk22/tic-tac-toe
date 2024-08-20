@@ -19,7 +19,7 @@ const gameBoard = (function () {
 
     const reset = () => {
         boardArr.fill(0);
-        moves=0;
+        moves = 0;
     }
 
     const checkRows = () => {
@@ -76,17 +76,20 @@ const gameBoard = (function () {
 })();
 
 
-function player(playerName, _mark) {
+function player(playerName, _mark, scoreText) {
     let name = playerName;
     let score = 0;
-    const mark=_mark;
+    const mark = _mark;
     function setName(newName) {
         name = newName;
     }
-
-    const getMark=()=>mark;
+    const getMark = () => mark;
     const getName = () => name;
-    const increaseScore = () => score++;
+    const increaseScore = () => {
+        score++;
+        scoreText.innerText=score;
+    }
+
     const makeMove = (index) => {
         return gameBoard.makeMove(index, mark);
     };
@@ -98,16 +101,19 @@ function player(playerName, _mark) {
 }
 
 const game = (function () {
-    const player1 = player("Player 1", "X");
-    const player2 = player("Player 2", "O");
+    const score1 = document.getElementById("player1");
+    const score2 = document.getElementById("player2");
+    const player1 = player("Player 1", "X", score1);
+    const player2 = player("Player 2", "O", score2);
     let rounds = 0;
     let draws = 0;
     const blocks = document.querySelectorAll(".block");
-    const restart=document.getElementById("restart");
-    const displayMsg=document.getElementById("msg");
-    displayMsg.innerText=`${player1.getName()}'s turn!`;
+    const restart = document.getElementById("restart");
+    const displayMsg = document.getElementById("msg");
+    const ties = document.getElementById("ties");
     const play = () => {
-        
+
+        displayMsg.innerText = `${player1.getName()}'s turn!`;
         rounds = 0;
         gameBoard.reset();
         blocks.forEach(block => {
@@ -117,10 +123,10 @@ const game = (function () {
         });
     };
 
-    restart.addEventListener("click",play);
-  
-    function updateTurnMsg(){
-        displayMsg.innerText=rounds%2===0? `${player1.getName()}'s turn!` : `${player2.getName()}'s turn!`;
+    restart.addEventListener("click", play);
+
+    function updateTurnMsg() {
+        displayMsg.innerText = rounds % 2 === 0 ? `${player1.getName()}'s turn!` : `${player2.getName()}'s turn!`;
     }
     const handleMove = (event) => {
         let index = event.target.dataset.index;
@@ -131,13 +137,15 @@ const game = (function () {
             rounds++;
             updateTurnMsg();
             if (gameBoard.checkWin()) {
-                displayMsg.innerText=(`${currentPlayer.getName()} won!`);
+                displayMsg.innerText = (`${currentPlayer.getName()} won!`);
                 currentPlayer.increaseScore();
                 setTimeout(play, 1000);
             }
             else if (gameBoard.checkDraw()) {
                 console.log("It's a draw!");
                 draws++;
+                ties.innerText = draws;
+                displayMsg.innerText = `It's a tie!`;
                 setTimeout(play, 1000);
             }
         }

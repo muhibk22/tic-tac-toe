@@ -1,34 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tic-Tac-Toe</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <div class="title"><h1>TIC TAC TOE</h1></div>
-    <div class="scores">
-        <div class="card" id="player1"><p>Player 1's Score:</p> </div>
-        <div class="card" id="ties"><p>Ties:</p> </div>
-        <div class="card" id="player2"><p>Player 2's Score:</p> </div>
+    <div class="pre-load">
+        <div class="title">
+            <h1>TIC TAC TOE</h1>
+        </div>
     </div>
-    <div class="gameboard" id="board">
-        <div class="block" data-index="0"></div>
-        <div class="block" data-index="1"></div>
-        <div class="block" data-index="2"></div>
-        <div class="block" data-index="3"></div>
-        <div class="block" data-index="4"></div>
-        <div class="block" data-index="5"></div>
-        <div class="block" data-index="6"></div>
-        <div class="block" data-index="7"></div>
-        <div class="block" data-index="8"></div>
+    <div class="post-load">
+        <div class="scores">
+            <div class="card">
+                <p id="name1">Player 1 </p> <p>:</p>
+                <p id="player1">0</p>
+            </div>
+            <div class="card">
+                <p>Ties:</p>
+                <p id="ties">0</p>
+            </div>
+            <div class="card">
+                <p id="name2">Player 2</p> <p>:</p>
+                <p id="player2">0</p>
+            </div>
+        </div>
+        <div class="gameboard" id="board">
+            <div class="block" data-index="0"></div>
+            <div class="block" data-index="1"></div>
+            <div class="block player1" data-index="2"></div>
+            <div class="block" data-index="3"></div>
+            <div class="block player2" data-index="4"></div>
+            <div class="block" data-index="5"></div>
+            <div class="block" data-index="6"></div>
+            <div class="block" data-index="7"></div>
+            <div class="block" data-index="8"></div>
+        </div>
+        <div class="settings">
+            <button type="button" id="restart">Restart</button>
+            <div class="msg" id="msg">
+                <p>you won</p>
+            </div>
+        </div>
     </div>
-    <div class="settings">
-        <button type="button" id="restart">Restart</button>
-        <div class="msg" id="msg"><p>you won</p></div>
-    </div>
-    
+
     <script src="script.js"></script>
 </body>
+
 </html>

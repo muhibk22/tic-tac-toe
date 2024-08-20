@@ -21,20 +21,25 @@ body{
     font-size: 2.4rem;
 
 }
-
+.card p{
+    display: inline;
+}
 .gameboard{
     display: grid;
     width: 600px;
     grid-template-columns: repeat(3,1fr);
-    gap:2px;
+    gap:4px;
     background-color: red;
-    border: 1px solid black;
+   
 }
 .block{
     margin: 0;
     height: 200px;
     background-color: white;
-
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    font-size: 150px;
 }
 
 .block:hover{
@@ -46,19 +51,32 @@ body{
     width: 600px;
     display: flex;
     justify-content: space-between;
+    margin-top: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    color: rgb(255, 0, 187);
+    font-weight: bold;
 }
 
 button{
     font-size: 1.5rem;
     padding: 6px 16px;
     cursor: pointer;
+    border-radius: 8px;
+    border: 0;
+    background-color: bisque;
 }
 .msg{
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 .title{
     font-size: 1.5rem;
     text-align: center;
 }
 
+.player1{
+    color: rgb(10, 131, 196);
+}
 
+.player2{
+    color: rgba(177, 164, 13, 1);
+}
