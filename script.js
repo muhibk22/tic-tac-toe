@@ -102,29 +102,36 @@ const game = (function () {
     const player2 = player("Player 2", "O");
     let rounds = 0;
     let draws = 0;
-
-
     const blocks = document.querySelectorAll(".block");
+    const restart=document.getElementById("restart");
+    const displayMsg=document.getElementById("msg");
+    displayMsg.innerText=`${player1.getName()}'s turn!`;
     const play = () => {
+        
         rounds = 0;
         gameBoard.reset();
         blocks.forEach(block => {
             block.textContent = '';
             block.removeEventListener("click", handleMove);
-            block.addEventListener("click", handleMove,);
+            block.addEventListener("click", handleMove);
         });
     };
 
+    restart.addEventListener("click",play);
+  
+    function updateTurnMsg(){
+        displayMsg.innerText=rounds%2===0? `${player1.getName()}'s turn!` : `${player2.getName()}'s turn!`;
+    }
     const handleMove = (event) => {
         let index = event.target.dataset.index;
         let currentPlayer = rounds % 2 === 0 ? player1 : player2;
-
         if (currentPlayer.makeMove(index)) {
             const target = document.querySelector(`[data-index='${index}']`);
             target.textContent = currentPlayer.getMark();
             rounds++;
+            updateTurnMsg();
             if (gameBoard.checkWin()) {
-                console.log(`${currentPlayer.getName()} won!`);
+                displayMsg.innerText=(`${currentPlayer.getName()} won!`);
                 currentPlayer.increaseScore();
                 setTimeout(play, 1000);
             }
