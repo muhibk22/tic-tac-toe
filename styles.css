@@ -19,7 +19,9 @@ body{
     color: white;   
     overflow-x: hidden;
 }
-
+.post-load{
+    overflow-x: hidden;
+}
 .scores{
     width: 75%;
     display: flex;
@@ -51,6 +53,7 @@ body{
     font-family: "Jersey 10", sans-serif;
     font-weight: 400;
     font-style: normal;
+    transition: background-color 0.15s;
 }
 .block:hover{
     background-color: grey;
@@ -190,6 +193,10 @@ form h2{
     .block{
         width: 120px;
         height: 120px;
+        font-size: 120px;
+    }
+    .block:hover{
+        background-color: rgb(22, 10, 53);
     }
     .settings{
         flex-direction: column;
@@ -201,6 +208,7 @@ form h2{
     .block{
         width: 90px;
         height: 90px;
+        font-size: 90px;
     }
     .scores{
         font-size: 1rem;
@@ -209,5 +217,11 @@ form h2{
     #restart{
         width: 10ch;
         font-size: 1.3rem;
+    }
+    #play{
+        width: 60%;
+    }
+    form{
+        width:90vw;
     }
 }
