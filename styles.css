@@ -141,6 +141,7 @@ form:active,form:hover{
 input {
     font-size: 1.5rem;
     padding: 6px;
+    width: 40%;
     margin-bottom: 10px;
     border-radius: 8px;
     background-color: rgb(41, 29, 61);
@@ -171,4 +172,24 @@ input::placeholder{
 }
 form h2{
     margin: 1rem 0;
+}
+
+@media(max-width:768px){
+    .names{
+        flex-direction: column;
+        align-items: center;
+    }
+    input{
+        width: 90%;
+    }
+    form{
+        text-align: center;
+        font-size: 1.2rem;
+    }
+    #play{
+        width: 90%;
+    }
+    .title{
+        font-size: 2rem;
+    }
 }
