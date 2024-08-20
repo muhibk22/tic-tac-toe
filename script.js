@@ -122,6 +122,29 @@ const game = (function () {
             block.addEventListener("click", handleMove);
         });
     };
+    function start(){
+        const playButton=document.getElementById("play");
+        const preLoad=document.getElementById("pre-load");
+        const postLoad=document.getElementById("post-load");
+        const name1=document.getElementById("name1");
+        const name2=document.getElementById("name2");
+        playButton.addEventListener("click", function(){
+            const nameText1=document.getElementById("nameInput1").value;
+            const nameText2=document.getElementById("nameInput2").value;
+            if (nameText1!==""){
+                name1.innerText=nameText1;
+                player1.setName(nameText1);
+            }
+            if (nameText2!==""){
+                name2.innerText=nameText2;
+                player2.setName(nameText2);
+            }
+            preLoad.classList.add("display-none");
+            postLoad.classList.remove("display-none");
+            play();
+        });
+        
+    }
 
     restart.addEventListener("click", play);
 
@@ -154,12 +177,12 @@ const game = (function () {
 
 
     return {
-        play
+        start
     };
 
 
 })();
 
 
-game.play();
+game.start();
 
