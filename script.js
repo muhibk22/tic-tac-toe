@@ -157,6 +157,14 @@ const game = (function () {
         if (currentPlayer.makeMove(index)) {
             const target = document.querySelector(`[data-index='${index}']`);
             target.textContent = currentPlayer.getMark();
+            if (rounds%2===0){
+                target.classList.remove("player1", "player2");
+                target.classList.add("player1");
+            }
+            else{
+                target.classList.remove("player1", "player2");
+                target.classList.add("player2");
+            }
             rounds++;
             updateTurnMsg();
             if (gameBoard.checkWin()) {
