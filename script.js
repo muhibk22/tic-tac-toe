@@ -168,12 +168,18 @@ const game = (function () {
             rounds++;
             updateTurnMsg();
             if (gameBoard.checkWin()) {
+                blocks.forEach(block=>{
+                    block.removeEventListener("click", handleMove);
+                });
                 displayMsg.innerText = (`${currentPlayer.getName()} won the round!`);
                 currentPlayer.increaseScore();
                 setTimeout(play, 3000);
+                
             }
             else if (gameBoard.checkDraw()) {
-                console.log("It's a draw!");
+                blocks.forEach(block=>{
+                    block.removeEventListener("click", handleMove);
+                });
                 draws++;
                 ties.innerText = draws;
                 displayMsg.innerText = `It's a tie!`;
